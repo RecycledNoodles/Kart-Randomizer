@@ -11,7 +11,8 @@ public class RandomizerGUI extends JFrame {
 	public static final int HEIGHT = 150;
 
 	private static String players;
-
+	
+	/*
 	public static void main(String[] args) {
 
 		randomizer = new KartRandomizer();
@@ -21,5 +22,6 @@ public class RandomizerGUI extends JFrame {
 			JOptionPane.showMessageDialog(null, randomizer.getPlayers(players));
 		}
 	}
+	*/
 
 }

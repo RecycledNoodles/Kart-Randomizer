@@ -32,9 +32,10 @@ public class KartRandomizerFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public KartRandomizerFrame() {
+		setTitle("Mario Kart Player Randomizer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		setMinimumSize(new Dimension(500,100));
+		setMinimumSize(new Dimension(450,250));
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

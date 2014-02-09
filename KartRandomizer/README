@@ -16,7 +16,7 @@ TODO:
 - ***TOP PRIORITY** Run track randomization to where the tracks are not reused until all 32 (or 31 if checked Luigi) are used. 
   (Does not have to carry over between closings of the application,session only)
   
-- dropdown for track amount 
+- dropdown for track amount (amts: 2, 3, 4, 5, 8, 10, 12, 16, 32)
 
 
 - code commenting and Javadoc

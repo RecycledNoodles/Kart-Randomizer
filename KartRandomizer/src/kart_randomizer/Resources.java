@@ -78,4 +78,18 @@ public class Resources {
 		new Vehicle("Spear",VehicleType.BIKE,Size.LARGE),
 		new Vehicle("Phantom",VehicleType.BIKE,Size.LARGE),
 	};
+
+	public static String[] tracks = {
+		 "Moo Moo Meadows",
+			"Mushroom Gorge", "Toad's Factory", "Mario Circuit",
+			"Coconut Mall", "DK Summit", "Wario's Gold Mine", "Daisy Circuit",
+			"Koopa Cape", "Maple Treeway", "Grumble Volcano", "Dry Dry Ruins",
+			"Moonview Highway", "Bowser's Castle", "Rainbow Road",
+			"GCN Peach Beach", "DS Yoshi Falls", "SNES Ghost Valley 2",
+			"N64 Mario Raceway", "N64 Sherbet Land", "GBA Shy Guy Beach",
+			"DS Delfino Square", "GCN Waluigi Stadium", "DS Desert Hills",
+			"GBA Bowser Castle 3", "N64 DK's Jungle Parkway",
+			"GCN Mario Circuit", "SNES Mario Circuit 3", "DS Peach Gardens",
+			"GCN DK Mountain", "N64 Bowser's Castle" 
+	};
 }

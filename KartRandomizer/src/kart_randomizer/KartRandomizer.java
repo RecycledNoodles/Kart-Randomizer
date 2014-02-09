@@ -1,10 +1,18 @@
 package kart_randomizer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Stack;
+
+import kart_randomizer.model.Racer;
+import kart_randomizer.model.Vehicle;
 
 public class KartRandomizer {
 
@@ -51,11 +59,21 @@ public class KartRandomizer {
 	int flag = 0;
 	public boolean good = false;
 	int value;
+	
+	private List<Racer> racerSack;
 
+	private List<String> trackSack;
+	
 	public String start() {
 		return "How many players?";
 	}
-
+	
+	
+	public KartRandomizer() {
+		racerSack = getRacerSack();
+		trackSack = getTrackSack();
+	}
+	
 	public String getPlayers(String players) {
 
 		Scanner console = new Scanner(players);
@@ -142,5 +160,71 @@ public class KartRandomizer {
 		
 		return returnStr + tracks;
 	}
+	
+	public List<Racer> getRacerSack() {
+		List<Racer> racers = new LinkedList(Arrays.asList(Resources.racers));
+		Collections.shuffle(racers);
+		
+		return racers;
+	}
+	
+	public List<String> getTrackSack() {
+		List<String> tracks = new LinkedList(Arrays.asList(Resources.tracks));
+		Collections.shuffle(tracks);
+		
+		return tracks;
+	}
+	public Map<String,Object>[] pickPlayerSelections(int players) {
+		Random random = new Random();
+		Map<String,Object>[] results = new Map[players];
+		for (int i=0; i<players; i++) {
+			Map<String,Object> selection = new HashMap<String,Object>();
+			selection.put("racer",racerSack.get(0));
+			racerSack.add(racerSack.get(0));
+			racerSack.remove(0);
+			
+			// filter out vehicles
+			List<Vehicle> filteredVehicles = new LinkedList<Vehicle>();
+			for (Vehicle vehicle : Resources.vehicles) {
+				if (vehicle.getWeight() == ((Racer)(selection.get("racer"))).getWeight())
+					filteredVehicles.add(vehicle);
+			}
+			
+			selection.put("vehicle", filteredVehicles.get(random.nextInt(filteredVehicles.size())));
+			
+			
+			
+			results[i] = selection;
+		}
+		return results;
+	}
+	
+	
+	public String[] pickTracks(boolean includeLuigisCircuit) {
+		String[] tracks = new String[4];
+		
+		int randomTracks;
+		
+		if (includeLuigisCircuit) {
+			randomTracks = 3;
+		} else {
+			randomTracks = 4;
+		}
+		
+		for (int i=0; i<randomTracks; i++) {
+			//if (includeLuigisCircuit && tracks[i].equals("Luigi Circuit"))
+			//	continue;
+			tracks[i] = trackSack.get(0);
+			trackSack.add(trackSack.get(0));
+			trackSack.remove(0);
+		}
+		
+		if (includeLuigisCircuit)
+			tracks[3] = "Luigi Circuit";
+		
+		return tracks;
+	}
+	
+	
 
 }

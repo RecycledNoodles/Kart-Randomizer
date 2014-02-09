@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<Vehicles>
+    <Vehicle>
+        <Name>Standard Kart</Name>
+        <Type>Kart</Type>
+        <Weight>All</Weight>
+    </Vehicle>
+    <Vehicle>
+        <Name>Booster Seat</Name>
+        <Type>Kart</Type>
+        <Weight>Light</Weight>
+    </Vehicle>
+    <Vehicle>
+        <Name>Mini Beast</Name>
+        <Type>Kart</Type>
+        <Weight>Light</Weight>
+	</Vehicle>
+	<Vehicle>
+	    <Name>Cheep Charger</Name>
+	    <Type>Kart</Type>
+	    <Weight>Light</Weight>
+	</Vehicle>
+	<Vehicle>
+	    <Name>Tiny Titan</Name>
+	    <Type>Kart</Type>
+	    <Weight>Light</Weight>
+	</Vehicle>
+	<Vehicle>
+	    <Name>Blue Falcon</Name>
+	    <Type>Kart</Type>
+	    <Weight>Light</Weight>
+	</Vehicle>
+	<Vehicle>
+	    <Name>Standard Bike</Name>
+	    <Type>Bike</Type>
+	    <Weight>All</Weight>
+	</Vehicle>
+	<Vehicle>
+	    <Name>Bullet Bike</Name>
+	    <Type>Bike</Type>
+	    <Weight>Light</Weight>
+	</Vehicle>
+    
+</Vehicles>

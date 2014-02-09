@@ -1,7 +1,6 @@
 package kart_randomizer.ui;
 
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -9,13 +8,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
-import javax.swing.JTable;
 
 import kart_randomizer.KartRandomizer;
 import kart_randomizer.model.Vehicle;
 import kart_randomizer.model.Racer;
-
-import javax.swing.JTextPane;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -26,6 +22,11 @@ import javax.swing.UIManager;
 import javax.swing.JCheckBox;
 
 public class MainPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8995255850456427973L;
+
 	private KartRandomizer randomizer;
 	
 	/* widgets */

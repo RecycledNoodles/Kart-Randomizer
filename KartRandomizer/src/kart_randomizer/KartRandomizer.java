@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Stack;
 
 import kart_randomizer.model.Racer;
 import kart_randomizer.model.Vehicle;
@@ -162,20 +161,21 @@ public class KartRandomizer {
 	}
 	
 	public List<Racer> getRacerSack() {
-		List<Racer> racers = new LinkedList(Arrays.asList(Resources.racers));
+		List<Racer> racers = new LinkedList<Racer>(Arrays.asList(Resources.racers));
 		Collections.shuffle(racers);
 		
 		return racers;
 	}
 	
 	public List<String> getTrackSack() {
-		List<String> tracks = new LinkedList(Arrays.asList(Resources.tracks));
+		List<String> tracks = new LinkedList<String>(Arrays.asList(Resources.tracks));
 		Collections.shuffle(tracks);
 		
 		return tracks;
 	}
 	public Map<String,Object>[] pickPlayerSelections(int players) {
 		Random random = new Random();
+		@SuppressWarnings("unchecked")
 		Map<String,Object>[] results = new Map[players];
 		for (int i=0; i<players; i++) {
 			Map<String,Object> selection = new HashMap<String,Object>();

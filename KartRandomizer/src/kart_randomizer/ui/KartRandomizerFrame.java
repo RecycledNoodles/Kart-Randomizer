@@ -10,6 +10,10 @@ import javax.swing.border.EmptyBorder;
 
 public class KartRandomizerFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7538356408460917155L;
 	private JPanel contentPane;
 
 	/**

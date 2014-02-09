@@ -1,8 +1,10 @@
-Kart Randomizer v1.3
+Kart Randomizer v2.1
 
 Trying to spice up your Mario Kart Wii experience?
 This Java applet lets you pick up to four players and then randomizes the character and their vehicle for each player and picks 4* random tracks.
 
+v2.1 Update: Include Luigi Circuit checkbox
+v2.0 Update: New GUI with repeatable randomizing
 v1.3 Update: Created new UI
 v1.2 Update: fixed all hotfixes for unique randomness within characters and tracks
 v1.1.2 Hotfix: unique random characters
@@ -11,12 +13,14 @@ v1.1 Update: now includes track randomizer (3 random preceding Luigi Circuit)
 
 
 TODO:
--button interface / dropdown for each setting (one player, two players...four players) instead of typing.
--dropdown for track amount (also find out the settings in MKWII for the race amounts)
--checkbox for ending in Luigi Circuit
--options on result dialog to redo with current settings or return to beginning to run app with different settings.
+- ***TOP PRIORITY** Run track randomization to where th tracks are not reused until all 32 (or 31 if checked Luigi) are used. 
+  (Does not have to carry over between closings of the application,session only)
+  
+- dropdown for track amount (also find out the settings in MKWII for the race amounts)
 
--code commenting and Javadoc
+
+- code commenting and Javadoc
 
 
 bvuongz: I STOLE THIS. HAH
+RecycledNoodles: you diq

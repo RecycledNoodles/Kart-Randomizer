@@ -80,7 +80,7 @@ public class MainPanel extends JPanel {
 		textArea.setEditable(false);
 		textArea.setBackground(UIManager.getColor("Label.background"));
 		
-		chckbxIncludeLuigiCircuit = new JCheckBox("Include Luigi Circuit");
+		chckbxIncludeLuigiCircuit = new JCheckBox("Include Luigi Circuit", true);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

@@ -1,5 +1,6 @@
 package kart_randomizer.ui;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -8,6 +9,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
+import javax.swing.SwingUtilities;
 
 import kart_randomizer.KartRandomizer;
 import kart_randomizer.model.Vehicle;
@@ -88,6 +90,9 @@ public class MainPanel extends JPanel {
 					results += tracks[i-1] + ".\n";
 				}
 				textArea.setText(results);
+				
+				updateWindow();
+
 			}
 		});
 		
@@ -140,4 +145,10 @@ public class MainPanel extends JPanel {
 		setLayout(groupLayout);
 
 	}
+	
+	public void updateWindow() {
+		JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+		topFrame.pack();
+	}
+	
 }

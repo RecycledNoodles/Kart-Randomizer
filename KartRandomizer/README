@@ -4,6 +4,7 @@ Trying to spice up your Mario Kart Wii experience?
 This Java app lets you pick up to four players and then randomizes the character and their vehicle for each player and picks 4* random tracks.
 (assumes all characters, vehicles, and tracks are unlocked)
 
+v2.1.1 Update: Includes track dropdown (WIP)
 v2.1 Update: Includes Luigi Circuit checkbox (default value checked)
 v2.0 Update: New GUI with repeatable randomizing
 v1.3 Update: Created new UI
@@ -14,19 +15,24 @@ v1.1 Update: now includes track randomizer (3 random preceding Luigi Circuit)
 
 
 TODO:
-- ***TOP PRIORITY** Run track randomization to where the tracks 
+
+***TOP PRIORITY** 
+-Run track randomization to where the tracks 
 are not reused until all 32 are used. 
 (Does not have to carry over between closings of the application,session only)
-  
+
+**Normal Priority**
 - checkbox for randomizing tracks 
-- dropdown for track amount (amts: 2, 3, 4, 5, 8, 10, 12, 16, 32)
+- adaptive frame for various track amounts.
+- include Luigi Circuit in random sack if checkbox is NOT checked
 
+*low priority*
+- have checkbox for including CTGP tracks (found at: http://wiki.tockdom.com/wiki/CTGP_Revolution#Tracks)
+- "Cooler" fonts, colors, etc for big update (the one with top priority feature)
 - remove unused code
-
-
-
-
 - code commenting and Javadoc
+
+
 
 bvuongz: I STOLE THIS. HAH
 RecycledNoodles: you diq

@@ -200,15 +200,15 @@ public class KartRandomizer {
 	}
 	
 	
-	public String[] pickTracks(boolean includeLuigisCircuit) {
-		String[] tracks = new String[4];
+	public String[] pickTracks(boolean includeLuigisCircuit, int numTracks) {
+		String[] tracks = new String[numTracks];
 		
 		int randomTracks;
 		
 		if (includeLuigisCircuit) {
-			randomTracks = 3;
+			randomTracks = numTracks -1;
 		} else {
-			randomTracks = 4;
+			randomTracks = numTracks;
 		}
 		
 		for (int i=0; i<randomTracks; i++) {
@@ -220,7 +220,7 @@ public class KartRandomizer {
 		}
 		
 		if (includeLuigisCircuit)
-			tracks[3] = "Luigi Circuit";
+			tracks[numTracks-1] = "Luigi Circuit";
 		
 		return tracks;
 	}

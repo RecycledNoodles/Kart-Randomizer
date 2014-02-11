@@ -31,6 +31,7 @@ public class MainPanel extends JPanel {
 	
 	/* widgets */
 	private JComboBox<Integer> playersComboBox;
+	private JComboBox<Integer> tracksComboBox;
 	private JTextArea textArea;
 	private JCheckBox chckbxIncludeLuigiCircuit;
 	
@@ -39,13 +40,28 @@ public class MainPanel extends JPanel {
 	 */
 	public MainPanel() {
 		
-		JLabel lblNewLabel = new JLabel("Number of Players:");
+		JLabel lblPlayers = new JLabel("Players:");
 		
 		playersComboBox = new JComboBox<Integer>();
 		playersComboBox.addItem(1);
 		playersComboBox.addItem(2);
 		playersComboBox.addItem(3);
 		playersComboBox.addItem(4);
+		
+		JLabel lblTracks = new JLabel("Tracks:");
+		
+		tracksComboBox = new JComboBox<Integer>();
+		tracksComboBox.addItem(2);
+		tracksComboBox.addItem(3);
+		tracksComboBox.addItem(4);
+		tracksComboBox.addItem(5);
+		tracksComboBox.addItem(8);
+		tracksComboBox.addItem(10);
+		tracksComboBox.addItem(12);
+		tracksComboBox.addItem(16);
+		tracksComboBox.addItem(32);
+		
+		tracksComboBox.setSelectedIndex(2);
 		
 		randomizer = new KartRandomizer();
 		
@@ -54,6 +70,7 @@ public class MainPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int numPlayers = (int)(playersComboBox.getSelectedItem());
+				int numTracks = (int)(tracksComboBox.getSelectedItem());
 				Map<String,Object>[] selections = randomizer.pickPlayerSelections(numPlayers);
 				String results = "";
 				
@@ -64,7 +81,7 @@ public class MainPanel extends JPanel {
 					results += ".\n";
 				}
 				results += "\n";
-				String[] tracks = randomizer.pickTracks(chckbxIncludeLuigiCircuit.isSelected());
+				String[] tracks = randomizer.pickTracks(chckbxIncludeLuigiCircuit.isSelected(), numTracks);
 				
 				for (int i=1; i <= tracks.length; i++) {
 					results += "Track " + i + " will be ";
@@ -80,7 +97,7 @@ public class MainPanel extends JPanel {
 		textArea.setEditable(false);
 		textArea.setBackground(UIManager.getColor("Label.background"));
 		
-		chckbxIncludeLuigiCircuit = new JCheckBox("Include Luigi Circuit", true);
+		chckbxIncludeLuigiCircuit = new JCheckBox("Luigi Circuit Final", true);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -91,9 +108,13 @@ public class MainPanel extends JPanel {
 						.addComponent(chckbxIncludeLuigiCircuit, Alignment.LEADING)
 						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNewLabel)
+							.addComponent(lblPlayers)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(playersComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblTracks)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(tracksComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
 							.addComponent(randomizeButton)))
 					.addContainerGap())
@@ -103,9 +124,11 @@ public class MainPanel extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
+						.addComponent(lblPlayers)
+						.addComponent(lblTracks)
 						.addComponent(randomizeButton)
-						.addComponent(playersComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(playersComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tracksComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(7)
 					.addComponent(chckbxIncludeLuigiCircuit)
 					.addPreferredGap(ComponentPlacement.UNRELATED)

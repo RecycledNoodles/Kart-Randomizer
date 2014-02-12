@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import kart_randomizer.model.Racer;
 import kart_randomizer.model.Vehicle;
+import kart_randomizer.util.Sack;
 
 public class KartRandomizer {
 
@@ -59,9 +60,10 @@ public class KartRandomizer {
 	public boolean good = false;
 	int value;
 	
-	private List<Racer> racerSack;
+	private Sack<Racer> racerSack;
 
-	private List<String> trackSack;
+	private Sack<String> trackSack;
+	private Sack<String> trackWithLCSack;
 	
 	public String start() {
 		return "How many players?";
@@ -69,8 +71,13 @@ public class KartRandomizer {
 	
 	
 	public KartRandomizer() {
-		racerSack = getRacerSack();
-		trackSack = getTrackSack();
+		racerSack = new Sack<Racer>(Arrays.asList(Resources.racers));
+		trackSack = new Sack<String>(Arrays.asList(Resources.tracks));
+		List<String> tracks = new ArrayList<String>(Arrays.asList(Resources.tracks));
+		tracks.add("Luigi Circuit");
+		trackWithLCSack = new Sack<String>(tracks);
+		
+		
 	}
 	
 	public String getPlayers(String players) {
@@ -179,9 +186,7 @@ public class KartRandomizer {
 		Map<String,Object>[] results = new Map[players];
 		for (int i=0; i<players; i++) {
 			Map<String,Object> selection = new HashMap<String,Object>();
-			selection.put("racer",racerSack.get(0));
-			racerSack.add(racerSack.get(0));
-			racerSack.remove(0);
+			selection.put("racer",racerSack.pick());
 			
 			// filter out vehicles
 			List<Vehicle> filteredVehicles = new LinkedList<Vehicle>();
@@ -204,19 +209,17 @@ public class KartRandomizer {
 		String[] tracks = new String[numTracks];
 		
 		int randomTracks;
-		
+		Sack<String> sack;
 		if (includeLuigisCircuit) {
 			randomTracks = numTracks -1;
+			sack = trackSack;
 		} else {
 			randomTracks = numTracks;
+			sack = trackWithLCSack;
 		}
 		
 		for (int i=0; i<randomTracks; i++) {
-			//if (includeLuigisCircuit && tracks[i].equals("Luigi Circuit"))
-			//	continue;
-			tracks[i] = trackSack.get(0);
-			trackSack.add(trackSack.get(0));
-			trackSack.remove(0);
+			tracks[i] = sack.pick();
 		}
 		
 		if (includeLuigisCircuit)

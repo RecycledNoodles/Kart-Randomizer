@@ -98,20 +98,20 @@ public class MainPanel extends JPanel {
 		
 		JSeparator separator = new JSeparator();
 		
+		chckbxIncludeLuigiCircuit = new JCheckBox("Luigi Circuit Final", true);
+		
 		textArea = new JTextArea();
 		textArea.setEditable(false);
 		textArea.setBackground(UIManager.getColor("Label.background"));
-		
-		chckbxIncludeLuigiCircuit = new JCheckBox("Luigi Circuit Final", true);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(textArea, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
-						.addComponent(chckbxIncludeLuigiCircuit, Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+						.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+						.addComponent(chckbxIncludeLuigiCircuit)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblPlayers)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -120,8 +120,9 @@ public class MainPanel extends JPanel {
 							.addComponent(lblTracks)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(tracksComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-							.addComponent(randomizeButton)))
+							.addPreferredGap(ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+							.addComponent(randomizeButton)
+							.addGap(17)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -136,10 +137,10 @@ public class MainPanel extends JPanel {
 						.addComponent(tracksComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(7)
 					.addComponent(chckbxIncludeLuigiCircuit)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+					.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		setLayout(groupLayout);
@@ -150,5 +151,4 @@ public class MainPanel extends JPanel {
 		JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		topFrame.pack();
 	}
-	
 }

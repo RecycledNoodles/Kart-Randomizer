@@ -227,6 +227,12 @@ public class KartRandomizer {
 		
 		return tracks;
 	}
+
+
+	public void shuffleTracks() {
+		// TODO Auto-generated method stub
+		trackSack.shuffle();
+	}
 	
 	
 

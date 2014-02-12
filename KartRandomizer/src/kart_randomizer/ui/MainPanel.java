@@ -22,6 +22,8 @@ import java.util.Map;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainPanel extends JPanel {
 	/**
@@ -41,7 +43,7 @@ public class MainPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public MainPanel() {
-		
+		randomizer = new KartRandomizer();
 		JLabel lblPlayers = new JLabel("Players:");
 		
 		playersComboBox = new JComboBox<Integer>();
@@ -53,6 +55,12 @@ public class MainPanel extends JPanel {
 		JLabel lblTracks = new JLabel("Tracks:");
 		
 		tracksComboBox = new JComboBox<Integer>();
+		tracksComboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				randomizer.shuffleTracks();
+				System.out.println("tracks shuffled");
+			}
+		});
 		tracksComboBox.addItem(2);
 		tracksComboBox.addItem(3);
 		tracksComboBox.addItem(4);
@@ -65,7 +73,7 @@ public class MainPanel extends JPanel {
 		
 		tracksComboBox.setSelectedIndex(2);
 		
-		randomizer = new KartRandomizer();
+
 		
 		JButton randomizeButton = new JButton("Make Selections");
 		randomizeButton.addMouseListener(new MouseAdapter() {

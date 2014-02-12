@@ -23,19 +23,17 @@ public class Sack<E> {
 		shuffle();
 	}
 	
-	private void shuffle() {
+	public void shuffle() {
 		Collections.shuffle(contents);
+		currentIndex = 0;
 	}
 	
 	public E pick() {
 		if (currentIndex >= contents.size()) {
 			shuffle();
-			currentIndex = 0;
 		}
 		
 		return contents.get(currentIndex++);
 	}
-	
-	
-	
+
 }

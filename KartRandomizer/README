@@ -27,6 +27,8 @@ TODO:
 *low priority*
 - have checkbox for including CTGP tracks (found at: http://wiki.tockdom.com/wiki/CTGP_Revolution#Tracks)
 - "Cooler" fonts, colors, etc for big update (the one with top priority feature)
+- port to Android
+- port to iPhone
 - remove unused code
 - code commenting and Javadoc
 

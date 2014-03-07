@@ -13,9 +13,9 @@ public class Resources {
 		new Racer("Baby Daisy",Size.SMALL),
 		new Racer("Toad",Size.SMALL),
 		new Racer("Toadette",Size.SMALL),
+		new Racer("Koopa Troopa",Size.SMALL),
+		new Racer("Dry Bones",Size.SMALL),
 		
-		new Racer("Koopa Troopa",Size.MEDIUM),
-		new Racer("Dry Bones",Size.MEDIUM),
 		new Racer("Mario",Size.MEDIUM),
 		new Racer("Luigi",Size.MEDIUM),
 		new Racer("Peach",Size.MEDIUM),

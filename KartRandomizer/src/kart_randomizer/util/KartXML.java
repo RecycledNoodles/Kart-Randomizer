@@ -63,16 +63,19 @@ public class KartXML {
 			
 			
 			// initialization
-			name = (String)(vehicleElement.getAttribute("Name"));
-			if (((String)(vehicleElement.getAttribute("Type"))).equals("Bike")) {
+			name = vehicleElement.getElementsByTagName("Name").item(0).getNodeValue();
+			String typeString = vehicleElement.getElementsByTagName("Type").item(0).getNodeValue();
+			String weightString = vehicleElement.getElementsByTagName("Weight").item(0).getNodeValue();
+			
+			if (typeString.equals("Bike")) {
 				type = VehicleType.BIKE;
 			} else {
 				type = VehicleType.KART;
 			}
 			
-			if (((String)(vehicleElement.getAttribute("Weight"))).equals("Small")) {
+			if (weightString.equals("Small")) {
 				weight = Size.SMALL;
-			} else if (((String)(vehicleElement.getAttribute("Weight"))).equals("Medium")) {
+			} else if (weightString.equals("Medium")) {
 				weight = Size.MEDIUM;
 			} else {
 				weight = Size.LARGE;

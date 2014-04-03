@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Cups>
+    <Cup name="Mushroom Cup">
+        <Track name="Luigi Circuit"/>
+        <Track name="Moo Moo Meadows"/>
+        <Track name="Mushroom Gorge"/>
+        <Track name="Toad's Factory"/>
+    </Cup>
+    
+    <Cup name="Flower Cup">
+        <Track name="Mario Circuit"/>
+        <Track name="Coconut Mall"/>
+        <Track name="DK Summit"/>
+        <Track name="Wario's Gold Mine"/>
+    </Cup>
+</Cups>

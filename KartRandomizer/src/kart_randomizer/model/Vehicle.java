@@ -8,6 +8,9 @@ public class Vehicle {
 		return name;
 	}
 	
+	public Vehicle() {
+		this("",null,null);
+	}
 	
 	public Vehicle(String name, VehicleType type, Size weight) {
 		super();
@@ -15,8 +18,8 @@ public class Vehicle {
 		this.type = type;
 		this.weight = weight;
 	}
-
-
+	
+	
 	public void setName(String name) {
 		this.name = name;
 	}

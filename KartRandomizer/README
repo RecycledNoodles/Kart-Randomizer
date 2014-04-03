@@ -23,6 +23,7 @@ TODO:
 **Normal Priority**
 - checkbox for randomizing tracks 
 - about button to show description (top part of this readme), version history, authors, etc.
+- have application use xml files for resource
 
 *low priority*
 - have checkbox for including CTGP tracks (found at: http://wiki.tockdom.com/wiki/CTGP_Revolution#Tracks)

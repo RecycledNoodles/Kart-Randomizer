@@ -167,19 +167,6 @@ public class KartRandomizer {
 		return returnStr + tracks;
 	}
 	
-	public List<Racer> getRacerSack() {
-		List<Racer> racers = new LinkedList<Racer>(Arrays.asList(Resources.racers));
-		Collections.shuffle(racers);
-		
-		return racers;
-	}
-	
-	public List<String> getTrackSack() {
-		List<String> tracks = new LinkedList<String>(Arrays.asList(Resources.tracks));
-		Collections.shuffle(tracks);
-		
-		return tracks;
-	}
 	public Map<String,Object>[] pickPlayerSelections(int players) {
 		Random random = new Random();
 		@SuppressWarnings("unchecked")

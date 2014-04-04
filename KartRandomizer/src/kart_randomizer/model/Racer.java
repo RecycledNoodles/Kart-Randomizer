@@ -12,6 +12,11 @@ public class Racer {
 		this.weight = weight;
 	}
 
+	public Racer() {
+		// TODO Auto-generated constructor stub
+		this("",null);
+	}
+
 	public String getName() {
 		return name;
 	}

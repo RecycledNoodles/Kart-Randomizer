@@ -14,4 +14,12 @@
         <Track name="DK Summit"/>
         <Track name="Wario's Gold Mine"/>
     </Cup>
+    
+    <Cup name="Star Cup">
+        
+    </Cup>
+    
+    <Cup name="Special Cup">
+        <Track name="Rainbow Road"/>
+    </Cup>
 </Cups>

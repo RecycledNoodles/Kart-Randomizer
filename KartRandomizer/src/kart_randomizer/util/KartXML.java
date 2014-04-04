@@ -11,11 +11,13 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import kart_randomizer.model.Racer;
 import kart_randomizer.model.Size;
+import kart_randomizer.model.Track;
 import kart_randomizer.model.Vehicle;
 import kart_randomizer.model.VehicleType;
 
@@ -95,13 +97,81 @@ public class KartXML {
 		return results.toArray(new Vehicle[results.size()]);
 	}
 	
-	public String[] getTracks() {
-		return null;
+	public Track[] getTracks() {
+		List<Track> results = new LinkedList<Track>();
+		ClassLoader cl = this.getClass().getClassLoader();
+		InputStream in = cl.getResourceAsStream(trackFile);
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder;
+		Document document;
+		try {
+			builder = factory.newDocumentBuilder();
+			document = builder.parse(in);
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return results.toArray(new Track[results.size()]);
+		}
+		
+		NodeList cupList = document.getElementsByTagName("Cup");
+		
+		for (int i=0; i<cupList.getLength(); i++) {
+			Element cup = (Element) cupList.item(i);
+			String cupName = cup.getAttribute("name");
+			NodeList trackList = cup.getElementsByTagName("Track");
+			
+			for (int j=0; j<trackList.getLength(); j++) {
+				Element element = (Element) trackList.item(j);
+				Track track = new Track();
+				track.setCup(cupName);
+				track.setName(element.getAttribute("name"));
+				
+				results.add(track);
+			}
+		}
+		
+		
+		return results.toArray(new Track[results.size()]);
 	}
 	
 	public Racer[] getRacers() {
-		return null;
+		List<Racer> results = new LinkedList<Racer>();
 		
+		ClassLoader cl = this.getClass().getClassLoader();
+		InputStream in = cl.getResourceAsStream(racerFile);
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder;
+		Document document;
+		try {
+			builder = factory.newDocumentBuilder();
+			document = builder.parse(in);
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return results.toArray(new Racer[results.size()]);
+		}
+		
+		NodeList racerList = document.getElementsByTagName("Racer");
+		for (int i=0; i<racerList.getLength(); i++) {
+			Element element = (Element) racerList.item(i);
+			Racer racer = new Racer();
+			
+			String name = element.getElementsByTagName("Name").item(0).getNodeValue();
+			String weightString = element.getElementsByTagName("Weight").item(0).getNodeValue();
+			
+			racer.setName(name);
+			if (weightString.equals("Small")) {
+				racer.setWeight(Size.SMALL);
+			} else if (weightString.equals("Medium")) {
+				racer.setWeight(Size.MEDIUM);
+			} else {
+				racer.setWeight(Size.LARGE);
+			}
+			
+			results.add(racer);
+		}
+		
+		return results.toArray(new Racer[results.size()]);
 	}
 
 }

@@ -13,7 +13,18 @@ INSERT INTO randomkartwii.tracks (name,cup) VALUES
 ('Moo Moo Meadows','Mushroom'),
 ('Mushroom Gorge','Mushroom'),
 ('Toad''s Factory','Mushroom'),
+
 ('Mario Circuit','Flower'),
 ('Coconut Mall','Flower'),
 ('DK Summit','Flower'),
-('Wario''s Gold Mine','Flower');
+('Wario''s Gold Mine','Flower'),
+
+('Daisy Circuit','Star'),
+('Koopa Cape','Star'),
+('Maple Treeway','Star'),
+('Grumble Volcano','Star'),
+
+('Dry Dry Ruins','Special'),
+('Moonview Highway','Special'),
+('Bowser''s Castle','Special'),
+('Rainbow Road','Special');

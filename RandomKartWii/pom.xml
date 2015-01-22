@@ -19,16 +19,40 @@
 
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<webXml>WebContent/WEB-INF/web.xml</webXml>
+					<!-- <outputDirectory>webapps</outputDirectory> <warName>contactgrabber</warName> -->
+					<webResources>
+						<resource>
+							<directory>WebContent</directory>
+						</resource>
+					</webResources>
+
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
-					<url>http://174.109.74.91:8080/manager/text</url>
+					<url>http://localhost:8080/manager/text</url>
 					<server>TomcatServer</server>
 					<path>/randomkartwii</path>
 					<update>true</update>
 				</configuration>
 			</plugin>
 		</plugins>
+
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/test/resources</directory>
+			</resource>
+		</resources>
 	</build>
 
 
@@ -60,6 +84,6 @@
 		</dependency>
 	</dependencies>
 
-
+	<packaging>war</packaging>
 
 </project>

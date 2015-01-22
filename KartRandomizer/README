@@ -1,0 +1,41 @@
+Kart Randomizer v2.2
+
+Trying to spice up your Mario Kart Wii experience?
+This Java app lets you pick up to four players and then randomizes the character and their vehicle for each player and picks 4* random tracks.
+(assumes all characters, vehicles, and tracks are unlocked)
+
+v2.2 Update: Track dropdown fully functional, luigi circuit included if not checked, data structure for tracks to cycle on reruns.
+v2.1.1 Update: Includes track dropdown (WIP)
+v2.1 Update: Includes Luigi Circuit checkbox (default value checked)
+v2.0 Update: New GUI with repeatable randomizing
+v1.3 Update: Created new UI
+v1.2 Update: fixed all hotfixes for unique randomness within characters and tracks
+v1.1.2 Hotfix: unique random characters
+v1.1.1 Hotfix: unique random tracks
+v1.1 Update: now includes track randomizer (3 random preceding Luigi Circuit)
+
+
+TODO:
+
+***TOP PRIORITY** 
+
+
+**Normal Priority**
+- checkbox for randomizing tracks 
+- about button to show description (top part of this readme), version history, authors, etc.
+- have application use xml files for resource
+
+*low priority*
+- have checkbox for including CTGP tracks (found at: http://wiki.tockdom.com/wiki/CTGP_Revolution#Tracks)
+- "Cooler" fonts, colors, etc for big update (the one with top priority feature)
+- port to Android
+- port to iPhone (we will need a mac for that)
+- remove unused code
+- code commenting and Javadoc
+
+
+
+bvuongz: I STOLE THIS. HAH
+RecycledNoodles: you diq
+RecycledNoodles: YOU DA MAN BAO
+bvuongz: THANX BRO

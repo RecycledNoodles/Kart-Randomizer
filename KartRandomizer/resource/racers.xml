@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Racers>
+    <Racer>
+        <Name>Baby Mario</Name>
+        <Weight>Small</Weight>
+    </Racer>
+    <Racer>
+        <Name>Baby Peach</Name>
+        <Weight>Small</Weight>
+    </Racer>
+    <Racer>
+        <Name>Toad</Name>
+        <Weight>Small</Weight>
+    </Racer>
+    <Racer>
+        <Name>Koopa Troopa</Name>
+        <Weight>Small</Weight>
+    </Racer>
+    <Racer>
+        <Name>Mario</Name>
+        <Weight>Medium</Weight>
+    </Racer>
+    <Racer>
+        <Name>Luigi</Name>
+        <Weight>Medium</Weight>
+    </Racer>
+    <Racer>
+        <Name>Peach</Name>
+        <Weight>Medium</Weight>
+    </Racer>
+    <Racer>
+        <Name>Yoshi</Name>
+        <Weight>Medium</Weight>
+    </Racer>
+    <Racer>
+        <Name>Wario</Name>
+        <Weight>Large</Weight>
+    </Racer>
+    <Racer>
+        <Name>Waluigi</Name>
+        <Weight>Large</Weight>
+    </Racer>
+    <Racer>
+        <Name>Donkey Kong</Name>
+        <Weight>Large</Weight>
+    </Racer>
+    <Racer>
+        <Name>Bowser</Name>
+        <Weight>Large</Weight>
+    </Racer>
+    
+    <Racer>
+        <Name>Baby Luigi</Name>
+        <Weight>Small</Weight>
+    </Racer>
+    <Racer>
+        <Name>Baby Daisy</Name>
+        <Weight>Small</Weight>
+    </Racer>
+    <Racer>
+        <Name>Toadette</Name>
+        <Weight>Small</Weight>
+    </Racer>
+    <Racer>
+        <Name>Dry Bones</Name>
+        <Weight>Small</Weight>
+    </Racer>
+    <Racer>
+        <Name>Daisy</Name>
+        <Weight>Medium</Weight>
+    </Racer>
+    <Racer>
+        <Name>Birdo</Name>
+        <Weight>Medium</Weight>
+    </Racer>
+    <Racer>
+        <Name>Diddy Kong</Name>
+        <Weight>Medium</Weight>
+    </Racer>
+    <Racer>
+        <Name>Bowser Jr.</Name>
+        <Weight>Medium</Weight>
+    </Racer>
+    <Racer>
+        <Name>King Boo</Name>
+        <Weight>Large</Weight>
+    </Racer>
+    <Racer>
+    	<Name>Rosalina</Name>
+    	<Weight>Large</Weight>
+    </Racer>
+    <Racer>
+    	<Name>Funky Kong</Name>
+    	<Weight>Large</Weight>
+    </Racer>
+    
+    <Racer>
+    	<Name>Dry Bowser</Name>
+    	<Weight>Large</Weight>
+    </Racer>
+
+</Racers>

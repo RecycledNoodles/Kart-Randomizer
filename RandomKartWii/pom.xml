@@ -40,20 +40,20 @@
 				<executions>
 					<execution>
 						<id>create-db</id>
-						<phase>resources</phase>
+						<phase>compile</phase>
 						<goals>
 							<goal>execute</goal>
 						</goals>
 						<configuration>
 							<url>jdbc:mysql://localhost/randomkartwii</url>
 							<autocommit>true</autocommit>
-							<sqlCommand>CREATE DATABASE randomkartwii</sqlCommand>
+							<sqlCommand>CREATE DATABASE IF NOT EXISTS randomkartwii</sqlCommand>
 						</configuration>
 					</execution>
 
 					<execution>
 						<id>populate-db</id>
-						<phase>resources</phase>
+						<phase>compile</phase>
 						<goals>
 							<goal>execute</goal>
 						</goals>

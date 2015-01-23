@@ -31,7 +31,7 @@ public class VehicleDAO extends BaseDAO {
 		try {
 			connection  = createConnection();
 			Statement statement = connection.createStatement();
-			String query = "SELECT name,vehicleType,size FROM tracks";
+			String query = "SELECT name,vehicleType,size FROM vehicles";
 			ResultSet rs = statement.executeQuery(query);
 			
 			while (rs.next()) {

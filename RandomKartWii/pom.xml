@@ -18,17 +18,70 @@
 		</pluginManagement>
 
 		<plugins>
-		<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>2.3.2</version>
-            <configuration>
-                <source>1.6</source>
-                <target>1.6</target>
-            </configuration>
-        </plugin>
-		
-		
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<version>1.5</version>
+
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.6</version>
+					</dependency>
+				</dependencies>
+
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>jdbc:mysql://localhost/randomkartwii</url>
+					<settingsKey>mysql</settingsKey>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>create-db</id>
+						<phase>resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<url>jdbc:mysql://localhost/randomkartwii</url>
+							<autocommit>true</autocommit>
+							<sqlCommand>CREATE DATABASE randomkartwii</sqlCommand>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>populate-db</id>
+						<phase>resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<url>jdbc:mysql://localhost/randomkartwii</url>
+							<autocommit>true</autocommit>
+							<srcFiles>
+								<srcFile>src/main/resources/sql/racers.sql</srcFile>
+								<srcFile>src/main/resources/sql/vehicles.sql</srcFile>
+								<srcFile>src/main/resources/sql/tracks.sql</srcFile>
+							</srcFiles>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>

@@ -58,4 +58,11 @@ public class RandomKartWiiService {
 		return result;
 	}
 	
+	@GET
+	@Path("/randomize")
+	@Produces("application/json")
+	public Map<String,Object> generateChoices() {
+		return null;
+	}
+	
 }

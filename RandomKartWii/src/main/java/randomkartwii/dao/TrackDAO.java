@@ -7,51 +7,47 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import randomkartwii.data.Racer;
-import randomkartwii.data.Size;
+import randomkartwii.data.Track;
 
-public class RacerDAO extends BaseDAO {
-	
-	private static RacerDAO instance = null;
+public class TrackDAO extends BaseDAO {
+
+	private static TrackDAO instance = null;
 	private static Object mutex = new Object();
-	
-	public static RacerDAO getInstance() {
+
+	public static TrackDAO getInstance() {
 		if (instance == null) {
-			synchronized (mutex) {
-				if (instance == null) instance = new RacerDAO();
+			synchronized (mutex ) {
+				if (instance == null) instance = new TrackDAO();
 			}
 			
 		}
 		return instance;
 	}
-	
-	public Racer[] getAllRacers() {
-		List<Racer> racers = new LinkedList<Racer>();
+
+	public Track[] getAllTracks() {
+		List<Track> tracks = new LinkedList<Track>();
 		Connection connection = null;
 		try {
 			connection  = createConnection();
 			Statement statement = connection.createStatement();
-			String query = "SELECT name,size FROM racers";
+			String query = "SELECT name,cup FROM tracks";
 			ResultSet rs = statement.executeQuery(query);
 			
 			while (rs.next()) {
-				Racer racer = new Racer();
-				racer.setName(rs.getString("name"));
-				racer.setWeight(Size.valueOf(rs.getString("size")));
+				Track track = new Track();
+				track.setName(rs.getString("name"));
+				track.setCup(rs.getString("cup"));
 				
-				racers.add(racer);
+				tracks.add(track);
 			}
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-
 		}
 
-		return racers.toArray(new Racer[racers.size()]);
+		return tracks.toArray(new Track[tracks.size()]);
 	}
-	
-	
+
 }

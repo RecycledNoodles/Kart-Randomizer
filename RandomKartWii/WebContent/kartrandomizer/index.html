@@ -32,7 +32,11 @@ function generateSelection() {
 			output.html(html);
 		},
 		success: function(data,textStatus,jqXHR) {
-			var html = "<h4>yay</h4>";
+			console.log(JSON.stringify(data));
+			var html = "<h3>Selections</h3>";
+			html += "<h4>Players</h4>";
+			html += ""
+			
 			output.html(html);
 		}
 	});

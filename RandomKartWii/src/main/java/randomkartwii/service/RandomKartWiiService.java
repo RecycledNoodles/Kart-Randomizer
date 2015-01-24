@@ -85,7 +85,7 @@ public class RandomKartWiiService {
 		
 		Sack<Racer> racerSack = new Sack<Racer>(racerDAO.getAllRacers());
 		
-		Map<String,Map<String,Object>> playerChoices = new HashMap<String,Map<String,Object>>();
+		List<Map<String,Object>> playerChoices = new LinkedList<Map<String,Object>>();
 		
 		for (int i=1; i<= players; i++) {
 			Map<String,Object> choice = new HashMap<String,Object>();
@@ -97,7 +97,7 @@ public class RandomKartWiiService {
 			
 			choice.put("vehicle", vehicleSack.pick());
 			
-			playerChoices.put(i + "", choice);
+			playerChoices.add(choice);
 		}
 		
 		result.put("players", playerChoices);

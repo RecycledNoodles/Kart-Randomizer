@@ -1,6 +1,7 @@
 package randomkartwii.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -51,6 +52,35 @@ public class VehicleDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 
+		return vehicles.toArray(new Vehicle[vehicles.size()]);
+	}
+	
+	public Vehicle[] getVehiclesBySize(Size size) {
+		System.out.println("BY SIZE");
+		List<Vehicle> vehicles = new LinkedList<Vehicle>();
+		Connection connection = null;
+		try {
+			connection = createConnection();
+			String query = "SELECT name,vehicleType,size FROM vehicles WHERE size=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, size.name());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				Vehicle vehicle = new Vehicle();
+				vehicle.setName(rs.getString("name"));
+				vehicle.setType(VehicleType.valueOf(rs.getString("vehicleType")));
+				vehicle.setWeight(Size.valueOf(rs.getString("size")));
+				vehicles.add(vehicle);
+			}
+			
+			preparedStatement.close();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return vehicles.toArray(new Vehicle[vehicles.size()]);
 	}
 

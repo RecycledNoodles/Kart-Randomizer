@@ -3,14 +3,17 @@ package randomkartwii.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import randomkartwii.dao.RacerDAO;
 import randomkartwii.dao.TrackDAO;
 import randomkartwii.dao.VehicleDAO;
 import randomkartwii.data.Racer;
+import randomkartwii.data.Size;
 import randomkartwii.data.Track;
 import randomkartwii.data.Vehicle;
 
@@ -49,11 +52,18 @@ public class RandomKartWiiService {
 	@GET
 	@Path("/vehicles")
 	@Produces("application/json")
-	public Map<String,Object> getVehicles() {
+	public Map<String,Object> getVehicles(@DefaultValue("") @QueryParam("size") String size) {
 		Map<String,Object> result = new HashMap<String,Object>();
 		
 		VehicleDAO dao = VehicleDAO.getInstance();
-		Vehicle[] vehicles = dao.getAllVehicles(); 
+		Vehicle[] vehicles = null;
+		
+		try {
+			vehicles = dao.getVehiclesBySize(Size.valueOf(size));
+		} catch (IllegalArgumentException e) {
+			System.out.println("failure");
+			vehicles = dao.getAllVehicles();
+		}
 		result.put("vehicles",vehicles);
 		return result;
 	}
@@ -61,7 +71,7 @@ public class RandomKartWiiService {
 	@GET
 	@Path("/randomize")
 	@Produces("application/json")
-	public Map<String,Object> generateChoices() {
+	public Map<String,Object> generateChoices(@DefaultValue("4") @QueryParam("players") int players) {
 		return null;
 	}
 	

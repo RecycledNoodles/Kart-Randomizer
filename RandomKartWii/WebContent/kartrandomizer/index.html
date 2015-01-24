@@ -3,8 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Kart Randomizer</title>
+
+<script src="jquery-1.11.2.min.js"></script>
+<script>
+
+</script>
+
 </head>
 <body>
-<p>things happen here.</p>
+	<h1>Kart Randomizer</h1>
+	<span>Players: </span>
+	<select id="playerselection">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+	</select>
+	<span>Tracks: </span>
+	<select id="trackselection">
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="8">8</option>
+		<option value="10">10</option>
+		<option value="12">12</option>
+		<option value="16">16</option>
+		<option value="32">32</option>
+	</select>
+	<button id="makeselectionsbutton">Make Selections</button>
+	<br />
+	<div id="output"></div>
 </body>
 </html>

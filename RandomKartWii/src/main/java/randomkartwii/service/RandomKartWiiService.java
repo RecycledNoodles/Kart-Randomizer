@@ -1,6 +1,8 @@
 package randomkartwii.service;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.DefaultValue;
@@ -73,7 +75,7 @@ public class RandomKartWiiService {
 	@Produces("application/json")
 	public Map<String,Object> generateChoices(
 			@DefaultValue("4") @QueryParam("players") int players,
-			@DefaultValue("4") @QueryParam("tracks") int tracks) {
+			@DefaultValue("2") @QueryParam("tracks") int tracks) {
 		
 		Map<String,Object> result = new HashMap<String,Object>();
 		
@@ -102,7 +104,12 @@ public class RandomKartWiiService {
 		
 		Sack<Track> trackSack = new Sack<Track>(trackDAO.getAllTracks());
 		
-		result.put("track", trackSack.pick());
+		List<Track> trackList = new LinkedList<Track>();
+		
+		for (int i=0; i<tracks; i++) {
+			trackList.add(trackSack.pick());
+		}
+		result.put("tracks", trackList);
 		
 		return result;
 	}

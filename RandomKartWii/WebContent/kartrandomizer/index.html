@@ -6,6 +6,42 @@
 
 <script src="jquery-1.11.2.min.js"></script>
 <script>
+function generateSelection() {
+	
+	var output = $("#output");
+	var numPlayers = $("#playerselection").val();
+	var numTracks = $("#trackselection").val();
+	
+	// call ajax
+	$.ajax({
+		url: "http://174.109.74.91:8080/randomkartwii/api/randomize",
+		crossDomain:true,
+		data: {
+			"players": numPlayers,
+			"tracks": numTracks
+		},
+		dataType: "json",
+		beforeSend: function() {
+			output.html("<p>loading...</p>");
+		},
+		error: function(jqXHR,textStatus,errorThrown) {
+			var html = "<h4>Error</h4>";
+			html += "<div>status: "+textStatus+"<br/>";
+			html += "error thrown: "+errorThrown+"</div>";
+			
+			output.html(html);
+		},
+		success: function(data,textStatus,jqXHR) {
+			var html = "<h4>yay</h4>";
+			output.html(html);
+		}
+	});
+}
+
+$(document).ready(function() {
+	$("#makeselectionsbutton").click(generateSelection);
+});
+
 
 </script>
 

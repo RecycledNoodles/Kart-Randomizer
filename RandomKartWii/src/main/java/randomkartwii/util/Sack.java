@@ -28,6 +28,7 @@ public class Sack<E> {
 		for (E content : contents) {
 			this.contents.add(content);
 		}
+		shuffle();
 	}
 	
 	public void shuffle() {

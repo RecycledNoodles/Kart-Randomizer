@@ -59,7 +59,7 @@ public class RandomKartWiiService {
 		Vehicle[] vehicles = null;
 		
 		try {
-			vehicles = dao.getVehiclesBySize(Size.valueOf(size));
+			vehicles = dao.getVehiclesBySize(Size.valueOf(size.toUpperCase()));
 		} catch (IllegalArgumentException e) {
 			System.out.println("failure");
 			vehicles = dao.getAllVehicles();

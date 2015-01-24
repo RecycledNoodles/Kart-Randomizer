@@ -34,7 +34,21 @@ INSERT INTO randomkartwii.vehicles (name,vehicleType,size) VALUES
 
 ('Standard Bike M','BIKE','MEDIUM'),
 ('Mach Bike','BIKE','MEDIUM'),
+('Sugarscoot','BIKE','MEDIUM'),
+('Zip Zip','BIKE','MEDIUM'),
+('Sneakster','BIKE','MEDIUM'),
+('Dolphin Dasher','BIKE','MEDIUM'),
 
 ('Standard Kart L','KART','LARGE'),
+('Offroader','KART','LARGE'),
+('Flame Flyer','KART','LARGE'),
+('Piranha Prowler','KART','LARGE'),
+('Jetsetter','KART','LARGE'),
+('Honeycoupe','KART','LARGE'),
 
-('Standard Bike L','BIKE','LARGE');
+('Standard Bike L','BIKE','LARGE')
+('Flame Runner','BIKE','LARGE'),
+('Wario Bike','BIKE','LARGE'),
+('Shooting Star','BIKE','LARGE'),
+('Spear','BIKE','LARGE'),
+('Phantom','BIKE','LARGE');

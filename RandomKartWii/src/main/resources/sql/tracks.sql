@@ -48,4 +48,3 @@ INSERT INTO randomkartwii.tracks (name,cup) VALUES
 ('Peach Gardens - DS','Lightning'),
 ('DK Mountain - GCN','Lightning'),
 ('Bowser''s Castle - N64','Lightning');
-;

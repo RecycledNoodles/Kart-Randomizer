@@ -46,7 +46,7 @@ INSERT INTO randomkartwii.vehicles (name,vehicleType,size) VALUES
 ('Jetsetter','KART','LARGE'),
 ('Honeycoupe','KART','LARGE'),
 
-('Standard Bike L','BIKE','LARGE')
+('Standard Bike L','BIKE','LARGE'),
 ('Flame Runner','BIKE','LARGE'),
 ('Wario Bike','BIKE','LARGE'),
 ('Shooting Star','BIKE','LARGE'),

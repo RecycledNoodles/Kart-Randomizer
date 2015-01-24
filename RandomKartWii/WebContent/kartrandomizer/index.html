@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Kart Randomizer</title>
-
+<style>
+.bolded {
+	font-weight: bold;
+}
+</style>
 <script src="jquery-1.11.2.min.js"></script>
 <script>
 function generateSelection() {
@@ -33,10 +37,23 @@ function generateSelection() {
 		},
 		success: function(data,textStatus,jqXHR) {
 			console.log(JSON.stringify(data));
+			
+			var players = data.players;
+			var tracks = data.tracks;
+			
 			var html = "<h3>Selections</h3>";
 			html += "<h4>Players</h4>";
-			html += ""
-			
+			html += "<ol>";
+			for (var i=0; i<players.length; i++) {
+				html += "<li><span class=bolded>"+players[i].racer.name+"</span> riding the <span class=bolded>"+players[i].vehicle.name+"</span></li>";
+			}
+			html += "</ol>";
+			html += "<h4>Tracks</h4>";
+			html += "<ol>";
+			for (var i=0; i<tracks.length; i++) {
+				html += "<li>"+tracks[i].name+"</li>";
+			}
+			html += "</ol>";
 			output.html(html);
 		}
 	});

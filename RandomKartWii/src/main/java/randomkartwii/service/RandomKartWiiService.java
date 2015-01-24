@@ -16,6 +16,7 @@ import randomkartwii.data.Racer;
 import randomkartwii.data.Size;
 import randomkartwii.data.Track;
 import randomkartwii.data.Vehicle;
+import randomkartwii.util.Sack;
 
 @Path("/")
 public class RandomKartWiiService {
@@ -61,7 +62,6 @@ public class RandomKartWiiService {
 		try {
 			vehicles = dao.getVehiclesBySize(Size.valueOf(size.toUpperCase()));
 		} catch (IllegalArgumentException e) {
-			System.out.println("failure");
 			vehicles = dao.getAllVehicles();
 		}
 		result.put("vehicles",vehicles);
@@ -71,8 +71,40 @@ public class RandomKartWiiService {
 	@GET
 	@Path("/randomize")
 	@Produces("application/json")
-	public Map<String,Object> generateChoices(@DefaultValue("4") @QueryParam("players") int players) {
-		return null;
+	public Map<String,Object> generateChoices(
+			@DefaultValue("4") @QueryParam("players") int players,
+			@DefaultValue("4") @QueryParam("tracks") int tracks) {
+		
+		Map<String,Object> result = new HashMap<String,Object>();
+		
+		RacerDAO racerDAO = RacerDAO.getInstance();
+		VehicleDAO vehicleDAO = VehicleDAO.getInstance();
+		TrackDAO trackDAO = TrackDAO.getInstance();
+		
+		Sack<Racer> racerSack = new Sack<Racer>(racerDAO.getAllRacers());
+		
+		Map<String,Map<String,Object>> playerChoices = new HashMap<String,Map<String,Object>>();
+		
+		for (int i=1; i<= players; i++) {
+			Map<String,Object> choice = new HashMap<String,Object>();
+			
+			Racer racer = racerSack.pick();
+			choice.put("racer", racer);
+			
+			Sack<Vehicle> vehicleSack = new Sack<Vehicle>(vehicleDAO.getVehiclesBySize(racer.getWeight()));
+			
+			choice.put("vehicle", vehicleSack.pick());
+			
+			playerChoices.put(i + "", choice);
+		}
+		
+		result.put("players", playerChoices);
+		
+		Sack<Track> trackSack = new Sack<Track>(trackDAO.getAllTracks());
+		
+		result.put("track", trackSack.pick());
+		
+		return result;
 	}
 	
 }

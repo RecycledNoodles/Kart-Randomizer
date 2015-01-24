@@ -27,7 +27,7 @@ INSERT INTO randomkartwii.tracks (name,cup) VALUES
 ('Dry Dry Ruins','Special'),
 ('Moonview Highway','Special'),
 ('Bowser''s Castle','Special'),
-('Rainbow Road','Special')
+('Rainbow Road','Special'),
 
 ('Peach Beach - GCN','Shell'),
 ('Yoshi Falls - DS','Shell'),

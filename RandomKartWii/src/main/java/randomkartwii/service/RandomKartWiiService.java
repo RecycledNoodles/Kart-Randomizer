@@ -1,5 +1,6 @@
 package randomkartwii.service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -76,7 +77,10 @@ public class RandomKartWiiService {
 	public Map<String,Object> generateChoices(
 			@DefaultValue("4") @QueryParam("players") int players,
 			@DefaultValue("2") @QueryParam("tracks") int tracks,
-			@DefaultValue("") @QueryParam("lasttrack") String lastTrackName) {
+			@DefaultValue("") @QueryParam("lasttrack") String trackIDList) {
+		
+		String[] ids = trackIDList.split(",");
+		System.out.println(Arrays.toString(ids));
 		
 		Map<String,Object> result = new HashMap<String,Object>();
 		

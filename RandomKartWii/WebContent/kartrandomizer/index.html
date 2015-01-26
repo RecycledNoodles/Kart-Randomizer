@@ -16,93 +16,88 @@
 <script src="jquery.mobile-1.4.5.min.js"></script>
 <script src="jquery-1.11.2.min.js"></script>
 <script>
-function generateSelection() {
-	
-	var output = $("#output");
-	var numPlayers = $("#playerselection").val();
-	var numTracks = $("#trackselection").val();
-	
-	// call ajax
-	$.ajax({
-		url: "http://174.109.74.91:8080/randomkartwii/api/randomize",
-		crossDomain:true,
-		data: {
-			"players": numPlayers,
-			"tracks": numTracks
-		},
-		dataType: "json",
-		beforeSend: function() {
-			output.html("<p>loading...</p>");
-		},
-		error: function(jqXHR,textStatus,errorThrown) {
-			var html = "<h4>Error</h4>";
-			html += "<div>status: "+textStatus+"<br/>";
-			html += "error thrown: "+errorThrown+"</div>";
-			
-			output.html(html);
-		},
-		success: function(data,textStatus,jqXHR) {
-			console.log(JSON.stringify(data));
-			
-			var players = data.players;
-			var tracks = data.tracks;
-			
-			var html = "<h3>Selections</h3>";
-			html += "<h4>Players</h4>";
-			html += "<ol>";
-			for (var i=0; i<players.length; i++) {
-				html += "<li><span class=bolded>"+players[i].racer.name+"</span> riding the <span class=bolded>"+players[i].vehicle.name+"</span></li>";
+	function generateSelection() {
+
+		var output = $("#output");
+		var numPlayers = $("#playerselection").val();
+		var numTracks = $("#trackselection").val();
+
+		// call ajax
+		$.ajax({
+			url : "http://174.109.74.91:8080/randomkartwii/api/randomize",
+			crossDomain : true,
+			data : {
+				"players" : numPlayers,
+				"tracks" : numTracks
+			},
+			dataType : "json",
+			beforeSend : function() {
+				output.html("<p>loading...</p>");
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				var html = "<h4>Error</h4>";
+				html += "<div>status: " + textStatus + "<br/>";
+				html += "error thrown: " + errorThrown + "</div>";
+
+				output.html(html);
+			},
+			success : function(data, textStatus, jqXHR) {
+				console.log(JSON.stringify(data));
+
+				var players = data.players;
+				var tracks = data.tracks;
+
+				var html = "<h3>Selections</h3>";
+				html += "<h4>Players</h4>";
+				html += "<ol>";
+				for (var i = 0; i < players.length; i++) {
+					html += "<li><span class=bolded>" + players[i].racer.name
+							+ "</span> riding the <span class=bolded>"
+							+ players[i].vehicle.name + "</span></li>";
+				}
+				html += "</ol>";
+				html += "<h4>Tracks</h4>";
+				html += "<ol>";
+				for (var i = 0; i < tracks.length; i++) {
+					html += "<li>" + tracks[i].name + "</li>";
+				}
+				html += "</ol>";
+				output.html(html);
 			}
-			html += "</ol>";
-			html += "<h4>Tracks</h4>";
-			html += "<ol>";
-			for (var i=0; i<tracks.length; i++) {
-				html += "<li>"+tracks[i].name+"</li>";
-			}
-			html += "</ol>";
-			output.html(html);
-		}
+		});
+	}
+
+	$(document).ready(function() {
+		$("#makeselectionsbutton").click(generateSelection);
 	});
-}
-
-$(document).ready(function() {
-	$("#makeselectionsbutton").click(generateSelection);
-});
-
-
 </script>
 
 </head>
 <body>
 	<h1>Kart Randomizer</h1>
-	<form method="post" action="demoform.asp">
-		<fieldset class="ui-field-contain">
-			<label for="racers">Racers:</label>
-			<select id="playerselection">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option selected="selected" value="3">3</option>
-				<option value="4">4</option>
-			</select>
-		</fieldset>
-	</form>
-	<form method="post" action="demoform.asp">
-		<fieldset class="ui-field-contain">
-			<label for="racers">Tracks:</label>
-			<select id="trackselection">
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option selected="selected" value="4">4</option>
-				<option value="5">5</option>
-				<option value="8">8</option>
-				<option value="10">10</option>
-				<option value="12">12</option>
-				<option value="16">16</option>
-				<option value="32">32</option>
-			</select>
-		</fieldset>
-	</form>
-	<button class="ui-btn" id="makeselectionsbutton">Make Selections</button>
+	<fieldset class="ui-field-contain">
+		<label for="racers">Racers:</label> <select id="playerselection">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option selected="selected" value="3">3</option>
+			<option value="4">4</option>
+		</select>
+	</fieldset>
+	<fieldset class="ui-field-contain">
+		<label for="racers">Tracks:</label> <select id="trackselection">
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option selected="selected" value="4">4</option>
+			<option value="5">5</option>
+			<option value="8">8</option>
+			<option value="10">10</option>
+			<option value="12">12</option>
+			<option value="16">16</option>
+			<option value="32">32</option>
+		</select>
+	</fieldset>
+	<button class="ui-btn" id="makeselectionsbutton">Make
+		Selections</button>
 	<br />
 	<div id="output"></div>
 </body>

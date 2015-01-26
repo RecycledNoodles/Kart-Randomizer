@@ -12,9 +12,11 @@
 }
 </style>
 
-<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
-<script src="jquery.mobile-1.4.5.min.js"></script>
-<script src="jquery-1.11.2.min.js"></script>
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script>
 	function generateSelection() {
 
@@ -74,34 +76,43 @@
 
 </head>
 <body>
-	<h1>Kart Randomizer</h1>
+	<div data-role="page">
+		<div data-role="header">
+			<h1>Kart Randomizer</h1>
+		</div>
 
-	<div data-role="fieldcontain">
-		<fieldset class="ui-field-contain" data-type="horizontal">
-			<label for="racers">Racers:</label> <select id="playerselection">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option selected="selected" value="3">3</option>
-				<option value="4">4</option>
-			</select>
-		</fieldset>
-		<fieldset class="ui-field-contain" data-type="horizontal">
-			<label for="racers">Tracks:</label> <select id="trackselection">
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option selected="selected" value="4">4</option>
-				<option value="5">5</option>
-				<option value="8">8</option>
-				<option value="10">10</option>
-				<option value="12">12</option>
-				<option value="16">16</option>
-				<option value="32">32</option>
-			</select>
-		</fieldset>
+		<div data-role="main" class="ui-content">
+			<fieldset class="ui-field-contain">
+				<label for="racers">Racers:</label> <select id="playerselection">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option selected="selected" value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</fieldset>
+			<fieldset class="ui-field-contain">
+				<label for="tracks" class="select">Tracks:</label> <select
+					id="trackselection">
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option selected="selected" value="4">4</option>
+					<option value="5">5</option>
+					<option value="8">8</option>
+					<option value="10">10</option>
+					<option value="12">12</option>
+					<option value="16">16</option>
+					<option value="32">32</option>
+				</select>
+			</fieldset>
+			<button class="ui-btn" id="makeselectionsbutton">Make
+				Selections</button>
+			<br />
+			<div id="output"></div>
+		</div>
 	</div>
-		<button class="ui-btn" id="makeselectionsbutton">Make
-			Selections</button>
-		<br />
-		<div id="output"></div>
+
+
+	<div data-role="fieldcontain"></div>
+
 </body>
 </html>

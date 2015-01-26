@@ -131,12 +131,14 @@ public class RandomKartWiiService {
 		for (int i=0; i<tracks-idArray.length; i++) {
 			trackList.add(trackSack.pick());
 		}
-		
-		Track[] lastTracks = trackDAO.getTracksByIDS(idArray);
-		
-		for (int i=0; i<lastTracks.length; i++) {
-			trackList.add(lastTracks[i]);
+		if (idArray.length > 0) {
+			Track[] lastTracks = trackDAO.getTracksByIDS(idArray);
+			
+			for (int i=0; i<lastTracks.length; i++) {
+				trackList.add(lastTracks[i]);
+			}			
 		}
+
 		
 		result.put("tracks", trackList);
 		

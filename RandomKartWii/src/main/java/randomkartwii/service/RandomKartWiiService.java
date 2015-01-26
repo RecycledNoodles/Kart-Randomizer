@@ -75,7 +75,8 @@ public class RandomKartWiiService {
 	@Produces("application/json")
 	public Map<String,Object> generateChoices(
 			@DefaultValue("4") @QueryParam("players") int players,
-			@DefaultValue("2") @QueryParam("tracks") int tracks) {
+			@DefaultValue("2") @QueryParam("tracks") int tracks,
+			@DefaultValue("") @QueryParam("lasttrack") String lastTrackName) {
 		
 		Map<String,Object> result = new HashMap<String,Object>();
 		

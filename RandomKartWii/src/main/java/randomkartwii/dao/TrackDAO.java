@@ -56,10 +56,10 @@ public class TrackDAO extends BaseDAO {
 		// creating array string
 		String arrayString = "";
 		for (int i=0; i<ids.length; i++) {
-			arrayString += ids[i];
-			if (i <ids.length-1)
-				arrayString += ",";
+			arrayString += ids[i] + ",";
 		}
+		
+		arrayString = arrayString.substring(0, arrayString.length()-1);
 		
 		List<Track> tracks = new LinkedList<Track>();
 		Connection connection = null;
@@ -117,10 +117,11 @@ public class TrackDAO extends BaseDAO {
 		// creating array string
 		String arrayString = "";
 		for (int i=0; i<ids.length; i++) {
-			arrayString += ids[i];
-			if (i <ids.length-1)
-				arrayString += ",";
-		}		
+			arrayString += ids[i] + ",";
+		}
+		
+		arrayString = arrayString.substring(0, arrayString.length()-1);
+		
 		List<Track> tracks = new LinkedList<Track>();
 		Connection connection = null;
 		try {

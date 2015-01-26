@@ -77,10 +77,16 @@ public class RandomKartWiiService {
 	public Map<String,Object> generateChoices(
 			@DefaultValue("4") @QueryParam("players") int players,
 			@DefaultValue("2") @QueryParam("tracks") int tracks,
-			@DefaultValue("") @QueryParam("lasttrack") String trackIDList) {
+			@DefaultValue(",") @QueryParam("lasttrack") String trackIDList) {
 		
 		String[] ids = trackIDList.split(",");
-		System.out.println(Arrays.toString(ids));
+		
+		int[] idArray = new int[ids.length];
+		for (int i=0; i<ids.length; i++) {
+			idArray[i] = Integer.parseInt(ids[i]);
+		}
+		System.out.println(Arrays.toString(idArray));
+		System.out.println("array length: "+idArray.length);
 		
 		Map<String,Object> result = new HashMap<String,Object>();
 		
@@ -107,13 +113,25 @@ public class RandomKartWiiService {
 		
 		result.put("players", playerChoices);
 		
-		Sack<Track> trackSack = new Sack<Track>(trackDAO.getAllTracks());
+		Sack<Track> trackSack;
+		
+		if (idArray.length > 0)
+			trackSack = new Sack<Track>(trackDAO.getTracksExcludingIDS(idArray));
+		else
+			trackSack = new Sack<Track>(trackDAO.getAllTracks());
 		
 		List<Track> trackList = new LinkedList<Track>();
 		
 		for (int i=0; i<tracks; i++) {
 			trackList.add(trackSack.pick());
 		}
+		
+		Track[] lastTracks = trackDAO.getTracksByIDS(idArray);
+		
+		for (int i=0; i<lastTracks.length; i++) {
+			trackList.add(lastTracks[i]);
+		}
+		
 		result.put("tracks", trackList);
 		
 		return result;

@@ -23,14 +23,21 @@
 		var output = $("#output");
 		var numPlayers = $("#playerselection").val();
 		var numTracks = $("#trackselection").val();
-
+		var luigilast = $("#luigibox:checkbox:checked").val();
+		
+		var lastTracks = {};
+		
+		if (typeof luigilast != 'undefined')
+			lastTracks[0] = luigilast;
+		
 		// call ajax
 		$.ajax({
 			url : "http://174.109.74.91:8080/randomkartwii/api/randomize",
 			crossDomain : true,
 			data : {
 				"players" : numPlayers,
-				"tracks" : numTracks
+				"tracks" : numTracks,
+				"lasttrack" : lastTracks
 			},
 			dataType : "json",
 			beforeSend : function() {
@@ -109,7 +116,7 @@
 
 			<fieldset class="ui-field-contain">
 				<label for="luigibox">Luigi Final</label>
-				<input type="checkbox" name="luigibox" id="luigibox" checked/>
+				<input type="checkbox" name="luigibox" id="luigibox" value="1" checked/>
 			</fieldset>
 			
 			<button class="ui-btn" id="makeselectionsbutton">Make

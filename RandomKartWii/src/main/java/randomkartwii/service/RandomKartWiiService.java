@@ -79,7 +79,10 @@ public class RandomKartWiiService {
 			@DefaultValue("2") @QueryParam("tracks") int tracks,
 			@DefaultValue(",") @QueryParam("lasttrack") String trackIDList) {
 		
-		String[] ids = trackIDList.split(",");
+		String[] ids = new String[0];
+		if (trackIDList.length() > 0) {
+			ids = trackIDList.split(",");
+		}
 		
 		int[] idArray = new int[ids.length];
 		for (int i=0; i<ids.length; i++) {
@@ -115,14 +118,17 @@ public class RandomKartWiiService {
 		
 		Sack<Track> trackSack;
 		
-		if (idArray.length > 0)
+		if (idArray.length > 0) {
+			System.out.println("exclusion");
 			trackSack = new Sack<Track>(trackDAO.getTracksExcludingIDS(idArray));
+		}
+
 		else
 			trackSack = new Sack<Track>(trackDAO.getAllTracks());
 		
 		List<Track> trackList = new LinkedList<Track>();
 		
-		for (int i=0; i<tracks; i++) {
+		for (int i=0; i<tracks-idArray.length; i++) {
 			trackList.add(trackSack.pick());
 		}
 		

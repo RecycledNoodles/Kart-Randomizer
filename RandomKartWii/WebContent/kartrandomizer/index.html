@@ -25,19 +25,20 @@
 		var numTracks = $("#trackselection").val();
 		var luigilast = $("#luigibox:checkbox:checked").val();
 		
-		var lastTracks = {};
+		var lastTracks = "";
 		
 		if (typeof luigilast != 'undefined')
-			lastTracks[0] = luigilast;
+			var lastTracks = luigilast;
 		
 		// call ajax
 		$.ajax({
-			url : "http://174.109.74.91:8080/randomkartwii/api/randomize",
+			//url : "http://174.109.74.91:8080/randomkartwii/api/randomize",
+			url : "/randomkartwii/api/randomize",
 			crossDomain : true,
 			data : {
 				"players" : numPlayers,
 				"tracks" : numTracks,
-				"lasttrack" : lastTracks
+				"lasttrack" : lastTracks,
 			},
 			dataType : "json",
 			beforeSend : function() {

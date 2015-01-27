@@ -2,4 +2,4 @@
 .project
 .settings/
 .classpath
-RandomKartWii/src/main/resources/sql/auth.ini
+/src/main/resources/sql/auth.ini

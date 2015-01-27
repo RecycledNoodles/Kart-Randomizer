@@ -79,6 +79,14 @@
 
 	$(document).ready(function() {
 		$("#makeselectionsbutton").click(generateSelection);
+		
+		
+		// getting the date
+		var d = new Date();
+
+		var output = d.getFullYear();
+		
+		$("#year").text(output);
 	});
 </script>
 
@@ -124,6 +132,13 @@
 				Selections</button>
 			<br />
 			<div id="output"></div>
+		</div>
+		
+		<div data-role="footer">
+		  <h5>Bao & Jesse</h5>
+		  <h6 id="year"></h6>
+		  <h4>100 years</h4>
+		  <h5><a href="https://github.com/RecycledNoodles/Kart-Randomizer">project page</a></h5>
 		</div>
 	</div>
 </body>

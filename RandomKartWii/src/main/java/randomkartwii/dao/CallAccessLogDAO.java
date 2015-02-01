@@ -77,7 +77,7 @@ public class CallAccessLogDAO extends BaseDAO {
 						+ "VALUES (CURDATE(),?)";
 				PreparedStatement statement = connection.prepareStatement(sql);
 				statement.setString(1, call);
-				
+				statement.execute();
 				statement.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

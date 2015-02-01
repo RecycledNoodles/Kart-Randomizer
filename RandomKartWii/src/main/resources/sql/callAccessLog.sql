@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS randomkartwii.callAccessLog
+(
+id INT NOT NULL AUTO_INCREMENT,
+dateAccessed CHAR(10) NOT NULL DEFAULT CURDATE(),
+callAccessed CHAR(30),
+timesAccessed INT NOT NULL DEFAULT 1,
+PRIMARY KEY (id)
+);

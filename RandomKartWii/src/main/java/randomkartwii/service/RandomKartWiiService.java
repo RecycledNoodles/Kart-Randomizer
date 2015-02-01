@@ -1,5 +1,8 @@
 package randomkartwii.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,9 +12,11 @@ import java.util.Map;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import randomkartwii.dao.CallAccessLogDAO;
 import randomkartwii.dao.RacerDAO;
 import randomkartwii.dao.TrackDAO;
 import randomkartwii.dao.VehicleDAO;
@@ -79,6 +84,10 @@ public class RandomKartWiiService {
 			@DefaultValue("2") @QueryParam("tracks") int tracks,
 			@DefaultValue(",") @QueryParam("lasttrack") String trackIDList) {
 		
+		CallAccessLogDAO callAccessLogDAO = new CallAccessLogDAO();
+		callAccessLogDAO.addEntry("randomize");
+		callAccessLogDAO = null;
+		
 		String[] ids = new String[0];
 		if (trackIDList.length() > 0) {
 			ids = trackIDList.split(",");
@@ -145,4 +154,29 @@ public class RandomKartWiiService {
 		return result;
 	}
 	
+	
+	@GET
+	@Path("/callaccesslog/{date}")
+	@Produces("application/json")
+	public Map<String,Object> getCallAccessEntries(
+			@DefaultValue("today") @PathParam("date") String date) {
+		Map<String,Object> result = new HashMap<String,Object>();
+		
+		CallAccessLogDAO dao = new CallAccessLogDAO();
+		
+		if (date.equals("all")) {
+			result.put("entries", dao.getEntries());
+		} else if (date.equals("today")) {
+			result.put("entries", dao.getEntriesToday());
+		} else {
+			DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
+			try {
+				result.put("entries", dao.getEntriesByDate(df.parse(date)));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

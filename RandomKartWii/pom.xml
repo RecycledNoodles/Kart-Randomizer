@@ -97,6 +97,7 @@
 								<srcFile>src/main/resources/sql/racers.sql</srcFile>
 								<srcFile>src/main/resources/sql/vehicles.sql</srcFile>
 								<srcFile>src/main/resources/sql/tracks.sql</srcFile>
+								<srcFile>src/main/resources/sql/callAccessLog.sql</srcFile>
 							</srcFiles>
 						</configuration>
 					</execution>

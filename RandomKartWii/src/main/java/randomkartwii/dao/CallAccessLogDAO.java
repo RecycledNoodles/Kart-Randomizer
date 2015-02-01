@@ -54,6 +54,7 @@ public class CallAccessLogDAO extends BaseDAO {
 		
 		if (id > 0) {
 			// update that entry
+			System.out.println("updating");
 			try {
 				String sql = "UPDATE timesAccessed=timesAccessed+1 WHERE id=?";
 				PreparedStatement statement = connection.prepareStatement(sql);
@@ -71,6 +72,7 @@ public class CallAccessLogDAO extends BaseDAO {
 			
 		} else {
 			// insert new entry
+			System.out.println("inserting");
 			try {
 				String sql = "INSERT INTO callAccessLog "
 						+ "(dateAccessed,callAccessed) "

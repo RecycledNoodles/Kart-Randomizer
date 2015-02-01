@@ -1,9 +1,8 @@
 package randomkartwii.data;
 
-import java.util.Date;
 
 public class CallAccessLogEntry {
-	private Date dateAccessed;
+	private String dateAccessed;
 	private int timesAccessed;
 	private String callAccessed;
 	
@@ -13,10 +12,10 @@ public class CallAccessLogEntry {
 		callAccessed = null;
 	}
 	
-	public Date getDateAccessed() {
+	public String getDateAccessed() {
 		return dateAccessed;
 	}
-	public void setDateAccessed(Date dateAccessed) {
+	public void setDateAccessed(String dateAccessed) {
 		this.dateAccessed = dateAccessed;
 	}
 	public int getTimesAccessed() {

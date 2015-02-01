@@ -106,12 +106,7 @@ public class CallAccessLogDAO extends BaseDAO {
 				
 				DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
 				
-				try {
-					entry.setDateAccessed(df.parse(rs.getString("dateAccessed")));
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					entry.setDateAccessed(new Date());
-				}
+				entry.setDateAccessed(rs.getString("dateAccessed"));
 				
 				results.add(entry);
 			}
@@ -126,7 +121,7 @@ public class CallAccessLogDAO extends BaseDAO {
 		return results.toArray(new CallAccessLogEntry[results.size()]);		
 	}
 	
-	public CallAccessLogEntry[] getEntriesByDate(Date date) {
+	public CallAccessLogEntry[] getEntriesByDate(String date) {
 		List<CallAccessLogEntry> results = new LinkedList<CallAccessLogEntry>();
 		
 		Connection connection = null;
@@ -140,7 +135,7 @@ public class CallAccessLogDAO extends BaseDAO {
 			DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
 			statement.setString(1, df.format(date));
 			ResultSet rs = statement.executeQuery();
-			
+			 
 			while (rs.next()) {
 				CallAccessLogEntry entry = new CallAccessLogEntry();
 				entry.setCallAccessed(rs.getString("callAccessed"));
@@ -180,12 +175,7 @@ public class CallAccessLogDAO extends BaseDAO {
 				
 				DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
 				
-				try {
-					entry.setDateAccessed(df.parse(rs.getString("dateAccessed")));
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					entry.setDateAccessed(new Date());
-				}
+				entry.setDateAccessed(rs.getString("dateAccessed"));
 				
 				results.add(entry);
 			}

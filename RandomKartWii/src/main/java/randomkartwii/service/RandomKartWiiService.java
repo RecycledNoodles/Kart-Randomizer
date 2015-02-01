@@ -171,7 +171,7 @@ public class RandomKartWiiService {
 		} else {
 			DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
 			try {
-				result.put("entries", dao.getEntriesByDate(df.parse(date)));
+				result.put("entries", dao.getEntriesByDate(date));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

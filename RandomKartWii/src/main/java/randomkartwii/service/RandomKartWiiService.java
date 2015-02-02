@@ -1,8 +1,5 @@
 package randomkartwii.service;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -169,7 +166,6 @@ public class RandomKartWiiService {
 		} else if (date.equals("today")) {
 			result.put("entries", dao.getEntriesToday());
 		} else {
-			DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
 			result.put("entries", dao.getEntriesByDate(date));
 		}
 		return result;

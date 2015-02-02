@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -104,8 +102,6 @@ public class CallAccessLogDAO extends BaseDAO {
 				entry.setCallAccessed(rs.getString("callAccessed"));
 				entry.setTimesAccessed(rs.getInt("timesAccessed"));
 				
-				DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
-				
 				entry.setDateAccessed(rs.getString("dateAccessed"));
 				
 				results.add(entry);
@@ -172,8 +168,6 @@ public class CallAccessLogDAO extends BaseDAO {
 				CallAccessLogEntry entry = new CallAccessLogEntry();
 				entry.setCallAccessed(rs.getString("callAccessed"));
 				entry.setTimesAccessed(rs.getInt("timesAccessed"));
-				
-				DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
 				
 				entry.setDateAccessed(rs.getString("dateAccessed"));
 				

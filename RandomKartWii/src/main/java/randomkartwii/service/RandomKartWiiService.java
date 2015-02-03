@@ -1,11 +1,26 @@
 package randomkartwii.service;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -29,6 +44,55 @@ public class RandomKartWiiService {
 	public String randomize() {
 		return null;
 	}
+	
+	private void recordCall(String call) throws IOException {
+		String url = "http://localhost:8080/apimonitor/api/calls/add";
+		String charset = "UTF-8";  // Or in Java 7 and later, use the constant: java.nio.charset.StandardCharsets.UTF_8.name()
+		// ...
+		String query = String.format("name=%s", 
+			     URLEncoder.encode(call,charset));
+		
+		URLConnection connection = new URL(url).openConnection();
+		connection.setDoOutput(true); // Triggers POST.
+		connection.setRequestProperty("Accept-Charset", charset);
+		connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
+
+		try (OutputStream output = connection.getOutputStream()) {
+		    output.write(query.getBytes(charset));
+		}
+
+		InputStream response = connection.getInputStream();
+		// ...
+		HttpURLConnection httpConnection = (HttpURLConnection) new URL(url).openConnection();
+		httpConnection.setRequestMethod("POST");
+		int status = httpConnection.getResponseCode();
+		for (Entry<String, List<String>> header : connection.getHeaderFields().entrySet()) {
+		    System.out.println(header.getKey() + "=" + header.getValue());
+		}
+		
+		String contentType = connection.getHeaderField("Content-Type");
+		charset = null;
+
+		for (String param : contentType.replace(" ", "").split(";")) {
+		    if (param.startsWith("charset=")) {
+		        charset = param.split("=", 2)[1];
+		        break;
+		    }
+		}
+
+		if (charset != null) {
+		    try (BufferedReader reader = new BufferedReader(new InputStreamReader(response, charset))) {
+		        for (String line; (line = reader.readLine()) != null;) {
+		        	System.out.println(line);
+		        }
+		    }
+		}
+		else {
+		    // It's likely binary content, use InputStream/OutputStream.
+		}
+		
+	}
+	
 	
 	@GET
 	@Path("/racers")
@@ -81,9 +145,12 @@ public class RandomKartWiiService {
 			@DefaultValue("2") @QueryParam("tracks") int tracks,
 			@DefaultValue(",") @QueryParam("lasttrack") String trackIDList) {
 		
-		CallAccessLogDAO callAccessLogDAO = new CallAccessLogDAO();
-		callAccessLogDAO.addEntry("randomize");
-		callAccessLogDAO = null;
+		try {
+			recordCall("randomkartwii.randomize");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		String[] ids = new String[0];
 		if (trackIDList.length() > 0) {

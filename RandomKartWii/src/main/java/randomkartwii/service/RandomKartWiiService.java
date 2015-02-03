@@ -45,7 +45,7 @@ public class RandomKartWiiService {
 		return null;
 	}
 	
-	private int recordCall(String call) throws IOException {
+	private void recordCall(String call) throws IOException {
 		String url = "http://localhost:8080/apimonitor/api/calls/add";
 		String charset = "UTF-8";  // Or in Java 7 and later, use the constant: java.nio.charset.StandardCharsets.UTF_8.name()
 		// ...
@@ -61,11 +61,11 @@ public class RandomKartWiiService {
 		    output.write(query.getBytes(charset));
 		}
 		
-		InputStream response = connection.getInputStream();
+		//InputStream response = connection.getInputStream();
 		// ...
-		HttpURLConnection httpConnection = (HttpURLConnection) new URL(url).openConnection();
-		httpConnection.setRequestMethod("POST");
-		int status = httpConnection.getResponseCode();
+		//HttpURLConnection httpConnection = (HttpURLConnection) new URL(url).openConnection();
+		//httpConnection.setRequestMethod("POST");
+		//int status = httpConnection.getResponseCode();
 		/*
 		for (Entry<String, List<String>> header : connection.getHeaderFields().entrySet()) {
 		    System.out.println(header.getKey() + "=" + header.getValue());
@@ -92,7 +92,7 @@ public class RandomKartWiiService {
 		    // It's likely binary content, use InputStream/OutputStream.
 		}
 		*/
-		return status;
+		//return status;
 		
 	}
 	

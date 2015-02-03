@@ -61,7 +61,7 @@ public class RandomKartWiiService {
 		    output.write(query.getBytes(charset));
 		}
 		
-		//InputStream response = connection.getInputStream();
+		InputStream response = connection.getInputStream();
 		// ...
 		//HttpURLConnection httpConnection = (HttpURLConnection) new URL(url).openConnection();
 		//httpConnection.setRequestMethod("POST");

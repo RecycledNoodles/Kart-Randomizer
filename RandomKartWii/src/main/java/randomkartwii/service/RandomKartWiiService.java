@@ -61,7 +61,17 @@ public class RandomKartWiiService {
 		    output.write(query.getBytes(charset));
 		}
 		
-		connection.connect();
+		InputStream response = connection.getInputStream();
+		
+		// let's print that data
+		BufferedReader reader = new BufferedReader(new InputStreamReader(response));
+		StringBuilder out = new StringBuilder();
+		String line;
+		while ((line = reader.readLine()) != null) {
+			out.append(line);
+		}
+		System.out.println(out.toString());
+		reader.close();
 	}
 	
 	

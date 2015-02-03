@@ -61,39 +61,7 @@ public class RandomKartWiiService {
 		    output.write(query.getBytes(charset));
 		}
 		
-		InputStream response = connection.getInputStream();
-		// ...
-		//HttpURLConnection httpConnection = (HttpURLConnection) new URL(url).openConnection();
-		//httpConnection.setRequestMethod("POST");
-		//int status = httpConnection.getResponseCode();
-		/*
-		for (Entry<String, List<String>> header : connection.getHeaderFields().entrySet()) {
-		    System.out.println(header.getKey() + "=" + header.getValue());
-		}
-		
-		String contentType = connection.getHeaderField("Content-Type");
-		charset = null;
-
-		for (String param : contentType.replace(" ", "").split(";")) {
-		    if (param.startsWith("charset=")) {
-		        charset = param.split("=", 2)[1];
-		        break;
-		    }
-		}
-
-		if (charset != null) {
-		    try (BufferedReader reader = new BufferedReader(new InputStreamReader(response, charset))) {
-		        for (String line; (line = reader.readLine()) != null;) {
-		        	System.out.println(line);
-		        }
-		    }
-		}
-		else {
-		    // It's likely binary content, use InputStream/OutputStream.
-		}
-		*/
-		//return status;
-		
+		connection.connect();
 	}
 	
 	

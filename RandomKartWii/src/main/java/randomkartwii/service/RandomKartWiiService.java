@@ -21,12 +21,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 
 import randomkartwii.dao.CallAccessLogDAO;
 import randomkartwii.dao.RacerDAO;
@@ -45,12 +47,18 @@ public class RandomKartWiiService {
 		return null;
 	}
 	
-	private void recordCall(String call) throws IOException {
+	private void recordCall(HttpServletRequest req) throws IOException {
 		String url = "http://localhost:8080/apimonitor/api/calls/add";
 		String charset = "UTF-8";  // Or in Java 7 and later, use the constant: java.nio.charset.StandardCharsets.UTF_8.name()
 		// ...
-		String query = String.format("name=%s", 
-			     URLEncoder.encode(call,charset));
+		
+		String name = req.getRequestURI();
+		String ip = req.getRemoteAddr();
+		
+		
+		String query = String.format("name=%s&ip=%s", 
+			     URLEncoder.encode(name,charset),
+			     URLEncoder.encode(ip,charset));
 		
 		URLConnection connection = new URL(url).openConnection();
 		connection.setDoOutput(true); // Triggers POST.
@@ -124,10 +132,11 @@ public class RandomKartWiiService {
 	public Map<String,Object> generateChoices(
 			@DefaultValue("4") @QueryParam("players") int players,
 			@DefaultValue("2") @QueryParam("tracks") int tracks,
-			@DefaultValue(",") @QueryParam("lasttrack") String trackIDList) {
+			@DefaultValue(",") @QueryParam("lasttrack") String trackIDList,
+			@Context HttpServletRequest req) {
 		
 		try {
-			recordCall("randomkartwii.randomize");
+			recordCall(req);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
